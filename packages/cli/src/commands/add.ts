@@ -6,7 +6,6 @@ import path from "path";
 import inquirer from "inquirer";
 import { getRegistry, getComponentFileContent } from "../utils/registry";
 import { readConfig, getProjectRoot, writeConfig } from "../utils/project";
-import { injectThemeTokens } from "../utils/theme";
 import { installDependencies } from "../utils/deps";
 
 export const addCommand = new Command("add")
@@ -60,7 +59,6 @@ export const addCommand = new Command("add")
         const fileSpinner = ora(`Fetching ${file}...`).start();
         try {
           const content = await getComponentFileContent(componentName, file);
-          const themedContent = injectThemeTokens(content, config.theme);
           
           const filePath = path.join(fullOutDir, file);
           
@@ -81,7 +79,7 @@ export const addCommand = new Command("add")
             fileSpinner.start(`Overwriting ${file}...`);
           }
 
-          await fs.writeFile(filePath, themedContent);
+          await fs.writeFile(filePath, content);
           fileSpinner.succeed(`Saved ${file}`);
         } catch (error: any) {
           fileSpinner.fail(`Failed to fetch ${file}`);

@@ -69,8 +69,7 @@
       "description": "Animated toast notification with variants and queue support",
       "version": "1.0.0",
       "files": [
-        "Toast.tsx",
-        "useToast.ts"
+        "Toast.tsx"
       ],
       "dependencies": [],
       "peerDependencies": [

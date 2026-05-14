@@ -154,12 +154,12 @@ function ToastItem({
 
 const variantStyles = {
   default: {
-    container: { backgroundColor: "__COLOR_CARD__", borderColor: "__COLOR_BORDER__" },
+    container: { backgroundColor: theme.colors.card, borderColor: theme.colors.border },
     icon: null,
     iconText: {},
-    messageText: { color: "__COLOR_FOREGROUND__" },
-    descText: { color: "__COLOR_MUTEDFOREGROUND__" },
-    actionText: { color: "__COLOR_PRIMARY__" },
+    messageText: { color: theme.colors.foreground },
+    descText: { color: theme.colors.mutedForeground },
+    actionText: { color: theme.colors.primary },
   },
   success: {
     container: { backgroundColor: "#F0FDF4", borderColor: "#BBF7D0" },
@@ -172,10 +172,10 @@ const variantStyles = {
   error: {
     container: { backgroundColor: "#FEF2F2", borderColor: "#FECACA" },
     icon: "✕",
-    iconText: { color: "__COLOR_DESTRUCTIVE__" },
-    messageText: { color: "__COLOR_DESTRUCTIVE__" },
+    iconText: { color: theme.colors.destructive },
+    messageText: { color: theme.colors.destructive },
     descText: { color: "#991B1B" },
-    actionText: { color: "__COLOR_DESTRUCTIVE__" },
+    actionText: { color: theme.colors.destructive },
   },
   warning: {
     container: { backgroundColor: "#FFFBEB", borderColor: "#FDE68A" },
@@ -200,10 +200,10 @@ const variantStyles = {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    left: __SPACING_LG__,
-    right: __SPACING_LG__,
+    left: theme.spacing.lg,
+    right: theme.spacing.lg,
     zIndex: 9999,
-    gap: __SPACING_SM__,
+    gap: theme.spacing.sm,
     pointerEvents: "box-none",
   },
   topContainer: {
@@ -213,10 +213,10 @@ const styles = StyleSheet.create({
     bottom: Platform.OS === "ios" ? 40 : 24,
   },
   toast: {
-    borderRadius: __RADIUS_LG__,
+    borderRadius: theme.borderRadius.lg,
     borderWidth: StyleSheet.hairlineWidth,
-    paddingHorizontal: __SPACING_MD__,
-    paddingVertical: __SPACING_SM__,
+    paddingHorizontal: theme.spacing.md,
+    paddingVertical: theme.spacing.sm,
     ...Platform.select({
       ios: {
         shadowColor: "#000",
@@ -232,10 +232,10 @@ const styles = StyleSheet.create({
   toastContent: {
     flexDirection: "row",
     alignItems: "center",
-    gap: __SPACING_SM__,
+    gap: theme.spacing.sm,
   },
   toastIcon: {
-    fontSize: __FONTSIZE_MD__,
+    fontSize: theme.fontSize.md,
     lineHeight: 20,
   },
   toastText: {
@@ -243,26 +243,26 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   toastMessage: {
-    fontSize: __FONTSIZE_SM__,
+    fontSize: theme.fontSize.sm,
     fontWeight: "500",
     lineHeight: 18,
   },
   toastDescription: {
-    fontSize: __FONTSIZE_XS__,
+    fontSize: theme.fontSize.xs,
     lineHeight: 16,
   },
   toastAction: {
-    paddingHorizontal: __SPACING_SM__,
+    paddingHorizontal: theme.spacing.sm,
     paddingVertical: 2,
   },
   toastActionText: {
-    fontSize: __FONTSIZE_SM__,
+    fontSize: theme.fontSize.sm,
     fontWeight: "500",
   },
   dismissButton: {
     padding: 2,
   },
   dismissText: {
-    fontSize: __FONTSIZE_XS__,
+    fontSize: theme.fontSize.xs,
   },
 });

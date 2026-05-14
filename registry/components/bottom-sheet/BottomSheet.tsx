@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { theme } from "./theme";
 
 export interface BottomSheetProps {
   children?: React.ReactNode;
@@ -15,10 +16,10 @@ export function BottomSheet({ children }: BottomSheetProps) {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: __RADIUS_MD__,
-    backgroundColor: "__COLOR_CARD__",
+    borderRadius: theme.borderRadius.md,
+    backgroundColor: theme.colors.card,
     borderWidth: 1,
-    borderColor: "__COLOR_BORDER__",
-    padding: __SPACING_MD__,
+    borderColor: theme.colors.border,
+    padding: theme.spacing.md,
   },
 });

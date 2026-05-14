@@ -14,6 +14,7 @@ import {
   StyleProp,
 } from "react-native";
 import * as Haptics from "expo-haptics";
+import { theme } from "./theme";
 
 export type HapticStyle = "light" | "medium" | "heavy" | "success" | "warning" | "error";
 
@@ -90,7 +91,7 @@ export function Pressable({
     >
       {loading ? (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="small" color="__COLOR_MUTEDFOREGROUND__" />
+          <ActivityIndicator size="small" color=theme.colors.mutedForeground />
         </View>
       ) : (
         children
@@ -101,7 +102,7 @@ export function Pressable({
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: __RADIUS_MD__,
+    borderRadius: theme.borderRadius.md,
   },
   disabled: {
     opacity: 0.5,
@@ -109,6 +110,6 @@ const styles = StyleSheet.create({
   loadingContainer: {
     alignItems: "center",
     justifyContent: "center",
-    padding: __SPACING_SM__,
+    padding: theme.spacing.sm,
   },
 });

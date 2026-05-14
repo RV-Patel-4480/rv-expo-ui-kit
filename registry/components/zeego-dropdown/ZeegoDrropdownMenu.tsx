@@ -6,6 +6,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Platform } from "react-native";
 import * as DropdownMenu from "zeego/dropdown-menu";
+import { theme } from "./theme";
 
 export interface DropdownMenuItem {
   key: string;
@@ -79,10 +80,10 @@ export function ZeegoDropdownMenu({ trigger, items = [], groups = [] }: Dropdown
 
 const styles = StyleSheet.create({
   content: {
-    backgroundColor: "__COLOR_POPOVER__",
-    borderRadius: __RADIUS_MD__,
+    backgroundColor: theme.colors.popover,
+    borderRadius: theme.borderRadius.md,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "__COLOR_BORDER__",
+    borderColor: theme.colors.border,
     minWidth: 180,
     ...Platform.select({
       android: {
@@ -92,25 +93,25 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: StyleSheet.hairlineWidth,
-    backgroundColor: "__COLOR_BORDER__",
+    backgroundColor: theme.colors.border,
     marginVertical: 4,
   },
   item: {
-    paddingHorizontal: __SPACING_MD__,
-    paddingVertical: __SPACING_SM__,
+    paddingHorizontal: theme.spacing.md,
+    paddingVertical: theme.spacing.sm,
     flexDirection: "row",
     alignItems: "center",
-    gap: __SPACING_SM__,
+    gap: theme.spacing.sm,
   },
   itemTitle: {
-    fontSize: __FONTSIZE_MD__,
-    color: "__COLOR_POPOVERFFOREGROUND__",
+    fontSize: theme.fontSize.md,
+    color: theme.colors.popoverForeground,
   },
   itemSubtitle: {
-    fontSize: __FONTSIZE_XS__,
-    color: "__COLOR_MUTEDFOREGROUND__",
+    fontSize: theme.fontSize.xs,
+    color: theme.colors.mutedForeground,
   },
   destructiveText: {
-    color: "__COLOR_DESTRUCTIVE__",
+    color: theme.colors.destructive,
   },
 });
