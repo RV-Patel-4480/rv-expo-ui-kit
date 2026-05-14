@@ -82,11 +82,11 @@ export function Pressable({
       {...rest}
       onPress={handlePress}
       disabled={isDisabled}
-      style={({ pressed }) => [
+      style={(state) => [
         styles.base,
-        { opacity: pressed ? activeOpacity : 1 },
+        { opacity: state.pressed ? activeOpacity : 1 },
         isDisabled && styles.disabled,
-        typeof style === "function" ? style({ pressed }) : style,
+        typeof style === "function" ? style(state) : style,
       ]}
     >
       {loading ? (
