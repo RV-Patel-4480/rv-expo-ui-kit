@@ -20,7 +20,7 @@ export type HapticStyle = "light" | "medium" | "heavy" | "success" | "warning" |
 
 export interface PressableProps extends Omit<RNPressableProps, "style"> {
   children: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
+  style?: RNPressableProps["style"];
   /** Show a spinner and disable interaction */
   loading?: boolean;
   /** Trigger haptic feedback on press */
@@ -91,7 +91,7 @@ export function Pressable({
     >
       {loading ? (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="small" color=theme.colors.mutedForeground />
+          <ActivityIndicator size="small" color={theme.colors.mutedForeground} />
         </View>
       ) : (
         children
