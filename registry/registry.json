@@ -1,0 +1,104 @@
+{
+  "version": "1.0.0",
+  "components": [
+    {
+      "name": "zeego-dropdown",
+      "description": "Accessible dropdown menu powered by Zeego with theme support",
+      "version": "1.0.0",
+      "files": [
+        "ZeegoDrropdownMenu.tsx"
+      ],
+      "dependencies": [
+        "zeego",
+        "@radix-ui/react-dropdown-menu"
+      ],
+      "peerDependencies": [
+        "react-native",
+        "expo"
+      ],
+      "tags": [
+        "menu",
+        "zeego",
+        "overlay"
+      ],
+      "preview": "import { DropdownMenu } from '@/components/ui/ZeegoDrropdownMenu';\n\n<DropdownMenu\n  trigger={<Button title=\"Open\" />}\n  items={[\n    { key: 'edit', title: 'Edit', onSelect: () => {} },\n    { key: 'delete', title: 'Delete', destructive: true, onSelect: () => {} },\n  ]}\n/>"
+    },
+    {
+      "name": "zeego-context-menu",
+      "description": "Long-press context menu powered by Zeego with theme support",
+      "version": "1.0.0",
+      "files": [
+        "ZeegoContextMenu.tsx"
+      ],
+      "dependencies": [
+        "zeego"
+      ],
+      "peerDependencies": [
+        "react-native",
+        "expo"
+      ],
+      "tags": [
+        "menu",
+        "zeego",
+        "overlay"
+      ],
+      "preview": "import { ContextMenu } from '@/components/ui/ZeegoContextMenu';\n\n<ContextMenu\n  items={[\n    { key: 'copy', title: 'Copy', onSelect: () => {} },\n    { key: 'share', title: 'Share', onSelect: () => {} },\n  ]}\n>\n  <View><Text>Long press me</Text></View>\n</ContextMenu>"
+    },
+    {
+      "name": "pressable",
+      "description": "Themed pressable with ripple, haptics, and loading state",
+      "version": "1.0.0",
+      "files": [
+        "Pressable.tsx"
+      ],
+      "dependencies": [
+        "expo-haptics"
+      ],
+      "peerDependencies": [
+        "react-native",
+        "expo"
+      ],
+      "tags": [
+        "input",
+        "button"
+      ],
+      "preview": "import { Pressable } from '@/components/ui/Pressable';\n\n<Pressable onPress={() => {}} haptic loading={false}>\n  <Text>Press me</Text>\n</Pressable>"
+    },
+    {
+      "name": "toast",
+      "description": "Animated toast notification with variants and queue support",
+      "version": "1.0.0",
+      "files": [
+        "Toast.tsx",
+        "useToast.ts"
+      ],
+      "dependencies": [],
+      "peerDependencies": [
+        "react-native",
+        "expo"
+      ],
+      "tags": [
+        "feedback",
+        "overlay"
+      ],
+      "preview": "import { ToastProvider, useToast } from '@/components/ui/Toast';\n\n// Wrap your app:\n<ToastProvider />\n\n// Anywhere in your app:\nconst { show } = useToast();\nshow({ message: 'Saved!', variant: 'success' });"
+    },
+    {
+      "name": "bottom-sheet",
+      "description": "TODO: describe BottomSheet",
+      "version": "1.0.0",
+      "files": [
+        "BottomSheet.tsx"
+      ],
+      "dependencies": [],
+      "peerDependencies": [
+        "react-native",
+        "expo"
+      ],
+      "tags": [
+        "misc"
+      ],
+      "preview": "import { BottomSheet } from '@/components/ui/BottomSheet';\n\n<BottomSheet />"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+name: Validate Registry
+
+on:
+  push:
+    paths:
+      - "registry/**"
+  pull_request:
+    paths:
+      - "registry/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate registry.json structure
+        run: node scripts/validate-registry.js
+
+      - name: Check all component files exist
+        run: node scripts/check-component-files.js

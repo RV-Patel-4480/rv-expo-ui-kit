@@ -1,0 +1,14 @@
+{
+  "name": "rv-expo-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-ready Expo component registry with CLI installer",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspace rv-expo-ui-cli build",
+    "dev": "yarn workspace rv-expo-ui-cli dev",
+    "lint": "yarn workspace rv-expo-ui-cli lint"
+  }
+}
