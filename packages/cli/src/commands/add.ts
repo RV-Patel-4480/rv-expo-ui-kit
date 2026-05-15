@@ -6,7 +6,7 @@ import path from "path";
 import inquirer from "inquirer";
 import { getRegistry, getComponentFileContent } from "../utils/registry";
 import { readConfig, getProjectRoot, writeConfig } from "../utils/project";
-import { installDependencies } from "../utils/deps";
+import { checkDependencies, installDependencies } from "../utils/deps";
 
 export const addCommand = new Command("add")
   .description("Install components into your project")
@@ -102,14 +102,28 @@ export const addCommand = new Command("add")
 
     if (depsToInstall.size > 0 && options.install !== false) {
       const depsArray = Array.from(depsToInstall);
-      console.log(`\nInstalling dependencies: ${chalk.cyan(depsArray.join(", "))}`);
-      const installSpinner = ora("Running expo install...").start();
-      try {
-        await installDependencies(depsArray);
-        installSpinner.succeed("Dependencies installed.");
-      } catch (error: any) {
-        installSpinner.fail("Failed to install dependencies.");
-        console.error(chalk.red(error.message));
+      console.log(`\nChecking dependencies: ${chalk.cyan(depsArray.join(", "))}`);
+
+      const { toInstall, skipped, declined } = await checkDependencies(depsArray);
+
+      if (declined.length > 0) {
+        console.log(
+          chalk.yellow(`\n  ⚠  Kept incompatible versions: ${declined.join(", ")}`) +
+          chalk.dim(" — things may not work correctly.")
+        );
+      }
+
+      if (toInstall.length > 0) {
+        const installSpinner = ora(`Running expo install ${toInstall.join(" ")}...`).start();
+        try {
+          await installDependencies(toInstall);
+          installSpinner.succeed(`Installed: ${toInstall.join(", ")}`);
+        } catch (error: any) {
+          installSpinner.fail("Failed to install dependencies.");
+          console.error(chalk.red(error.message));
+        }
+      } else if (skipped.length > 0 && declined.length === 0) {
+        console.log(chalk.green("  ✓ All dependencies already satisfied — nothing to install."));
       }
     }
 
