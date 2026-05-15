@@ -66,12 +66,15 @@
     },
     {
       "name": "toast",
-      "description": "Animated toast notification with variants and queue support",
+      "description": "iOS 26-style glass notification toasts with stacking, swipe-to-dismiss, haptics, and global imperative API",
       "version": "1.0.0",
       "files": [
         "Toast.tsx"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "react-native-safe-area-context",
+        "expo-haptics"
+      ],
       "peerDependencies": [
         "react-native",
         "expo"
@@ -80,7 +83,7 @@
         "feedback",
         "overlay"
       ],
-      "preview": "import { ToastProvider, useToast } from '@/components/ui/Toast';\n\n// Wrap your app:\n<ToastProvider />\n\n// Anywhere in your app:\nconst { show } = useToast();\nshow({ message: 'Saved!', variant: 'success' });"
+      "preview": "import { ToastProvider, toast } from '@/components/ui/Toast';\n\n// Wrap your app:\n<ToastProvider />\n\n// Anywhere (even outside React):\ntoast.show({ message: 'Saved!', variant: 'success' });"
     },
     {
       "name": "bottom-sheet",
